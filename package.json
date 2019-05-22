@@ -1,0 +1,28 @@
+{
+  "name": "awesomeproject",
+  "version": "0.0.1",
+  "description": "very good",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodemon app.js",
+    "start": "nodemon app.js"
+  },
+  "keywords": [
+    "good",
+    "node.js"
+  ],
+  "author": "Dmitriy Shashkov",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "connect-mongodb-session": "^2.1.1",
+    "csurf": "^1.10.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.16.1",
+    "express-validator": "^5.3.1",
+    "mongoose": "^5.5.9",
+    "nodemailer": "^6.1.1",
+    "nodemon": "^1.19.0"
+  }
+}
