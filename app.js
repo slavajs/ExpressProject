@@ -8,7 +8,7 @@ const app = express();
 
 const notFound = require('./errors/404')
 
-const URI = "mongodb+srv://Dmitriy:WarriorXPro2004@dima-avikx.mongodb.net/Hey";
+const URI = "mongodb+srv://Dmitriy:WarriorXPro2004@dima-avikx.mongodb.net/testProject";
 var store = new MDBStore({
   uri: URI,
   collection: "sessions"
