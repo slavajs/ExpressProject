@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+}
+
+.mainnav {
+    display: flex;
+    width:100vw;
+    height: 5vh;
+    justify-content: space-evenly;
+    list-style-type: none;
+    background-color: rgb(81, 124, 92);
+}
+
+.mainnav .mainnav__elem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15vw;
+}
+
+
+
+.mainnav .mainnav__elem a {
+    text-decoration: none;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.2rem;
+    color: white;
+}
+.mainnav .mainnav__elem a:hover {
+    color: rgb(168, 39, 39);
+}
+.mainnav .mainnav__elem a:active{
+    
+    color: rgb(255, 49, 49);
+}
