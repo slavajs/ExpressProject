@@ -9,7 +9,7 @@ const app = express();
 const notFound = require('./errors/404')
 const authRoutes = require('./routes/auth');
 
-const URI = "mongodb+srv://Dmitriy:WarriorXPro2004@dima-avikx.mongodb.net/testProject";
+const URI = "mongodb+srv://Dmitriy:Password@dima-avikx.mongodb.net/testProject";
 var store = new MDBStore({
   uri: URI,
   collection: "sessions"
