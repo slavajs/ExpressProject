@@ -40,6 +40,7 @@ app.get('/', (req, res, next) => {
 })
 
 app.use(authRoutes);
+
 app.use(notFound);
 
 
