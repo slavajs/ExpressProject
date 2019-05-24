@@ -5,13 +5,12 @@ const path = require("path");
 const session = require("express-session");
 const MDBStore = require("connect-mongodb-session")(session);
 const app = express();
-
+const dotenv = require('dotenv').config();
 const notFound = require('./errors/404')
 const authRoutes = require('./routes/auth');
 
-const URI = "mongodb+srv://Dmitriy:WarriorXPro2004@dima-avikx.mongodb.net/testProject";
 var store = new MDBStore({
-  uri: URI,
+  uri: process.env.MDB_STRING,
   collection: "sessions"
 });
 
@@ -45,6 +44,6 @@ app.use(notFound);
 
 
 mongoose
-  .connect(URI, { useNewUrlParser: true })
+  .connect(process.env.MDB_STRING, { useNewUrlParser: true })
   .then(res => app.listen(3000))
   .catch(err => console.log(err));

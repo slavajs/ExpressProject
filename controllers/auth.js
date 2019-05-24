@@ -6,7 +6,7 @@ const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport(
     sendgrid({
         auth: {
-            api_key: "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"
+            api_key: "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"
         }
     })
 )
@@ -47,7 +47,9 @@ exports.postSignUp = (req, res, next) => {
 }
 
 exports.getLogin = (req, res, next) => {
-    
+    res.render('login.ejs', {
+        pageTitle: "Log In"
+    })
 }
 
 exports.postLogin = (req, res, next) => {
