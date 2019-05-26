@@ -4,14 +4,18 @@
 }
 
 .mainForm label,
-.mainForm input {
+.mainForm input, .mainForm textarea {
   display: block;
   margin-top: 1rem;
   margin-left: 1rem;
 }
-
+.mainForm label {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
 .mainForm input {
   width: 20vw;
+  height: 2.5vh;
   outline: none;
   border: 1px solid black;
 }
@@ -25,9 +29,19 @@
 .errorMessage {
   width: 50vw;
   margin: 10px auto;
-  height: 3vh;
   color: rgba(0, 0, 0, 0.931);
   background-color: rgb(245, 122, 122);
   font-size: 1.5rem;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.regm {
+  width: 20vw;
+  margin: 10px 0 0 1rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-bottom: 3px solid green;
+  height: 2.2rem;
+  font-size: 1.5em;
   text-align: center;
 }

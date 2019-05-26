@@ -1,0 +1,19 @@
+<%- include('../includes/head.ejs') %>
+<link rel = 'stylesheet' href = 'css/form.css'>
+<link rel ='stylesheet' href = 'css/nav.css'>
+</head>
+
+
+<body>
+<%- include('../includes/nav.ejs') %>
+<form class = 'mainform' method = 'post'>
+<label for = 'email'> Type your email for our response</label>
+<input type = "email" name ='userEmail' id = 'userEmail'>
+
+<label for ='feedback'> Your feedback</label>
+<textarea name = 'feedback' id = 'feedback'></textarea>
+<input type = 'hidden' name = '_csrf' value = '<%= csrfToken  %>'>
+<input type = 'submit' value = 'Send'>
+
+</form>
+</body>
