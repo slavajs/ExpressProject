@@ -1,6 +1,6 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
-const multer = require('multer');
+const multer = require("multer");
 const sendgrid = require("nodemailer-sendgrid-transport");
 const nodemailer = require("nodemailer");
 const { validationResult } = require("express-validator/check");
@@ -39,40 +39,40 @@ exports.postSignUp = (req, res, next) => {
   }
   User.findOne({ email: email })
     .then(user => {
-      if(user) {
-        return res.status(422).render('auth/signup', {
-          pageTitle: 'Sign Up',
-          errorMessage: 'User with given email already exist',
+      if (user) {
+        return res.status(422).render("auth/signup", {
+          pageTitle: "Sign Up",
+          errorMessage: "User with given email already exist",
           oldInput: {
             email: email,
             password: password
           }
-        }) 
+        });
       }
       bcrypt
-      .hash(password, 12)
-      .then(hashedPassword => {
-        const user = new User({
-          email: email,
-          password: hashedPassword
+        .hash(password, 12)
+        .then(hashedPassword => {
+          const user = new User({
+            email: email,
+            password: hashedPassword
+          });
+          return user.save();
+        })
+        .then(result => {
+          transporter.sendMail({
+            from: "slavajs@gay.com",
+            to: email,
+            subject: "Sign Up",
+            text: "Thank you for using our web site"
+          });
+          return res.redirect("/login");
+        })
+        .catch(err => {
+          console.log(err);
+          //   const error = new Error(err);
+          //   error.statusCode = 500;
+          //   return next(err);
         });
-        return user.save();
-      })
-      .then(result => {
-        transporter.sendMail({
-          from: "slavajs@gay.com",
-          to: email,
-          subject: "Sign Up",
-          text: "Thank you for using our web site"
-        });
-        return res.redirect("/login");
-      })
-      .catch(err => {
-        console.log(err);
-        //   const error = new Error(err);
-        //   error.statusCode = 500;
-        //   return next(err);
-      });
     })
     .catch(err => console.log(err));
 };
