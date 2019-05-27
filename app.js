@@ -60,5 +60,5 @@ app.use(notFound);
 
 mongoose
   .connect(process.env.MDB_STRING, { useNewUrlParser: true, dbName: "project" })
-  .then(res => app.listen(3000))
+  .then(res => app.listen(80))
   .catch(err => console.log(err));
