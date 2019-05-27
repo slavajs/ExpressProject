@@ -8,7 +8,7 @@
     <% if (errorMessage) { %>
         <div class = errorMessage> <%= errorMessage %></div>
         <%  } %>
-    <form class ="mainForm" method = 'post' action = '/signup' >
+    <form class ="mainForm" method = 'post' action = '/signup' novalidate >
     <div class = 'regm'>Sign Up </div>
     <label for = 'email'> Email </label>
     <input type = 'email' name = 'email' id = 'email' value = "<%= oldInput.email %>">
