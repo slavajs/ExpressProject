@@ -49,7 +49,7 @@ app.use((req, res, next) => {
   next();
 });
 app.get("/", (req, res, next) => {
-  return res.render("index.ejs", {
+  res.render("index.ejs", {
     pageTitle: "Main"
   });
 });
@@ -57,7 +57,6 @@ app.get("/", (req, res, next) => {
 app.use(authRoutes);
 app.use(supRoutes);
 app.use(notFound);
-
 
 mongoose
   .connect(process.env.MDB_STRING, { useNewUrlParser: true, dbName: "project" })
