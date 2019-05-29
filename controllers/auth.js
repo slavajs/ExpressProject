@@ -1,6 +1,5 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
-const multer = require("multer");
 const sendgrid = require("nodemailer-sendgrid-transport");
 const nodemailer = require("nodemailer");
 const { validationResult } = require("express-validator/check");
@@ -24,9 +23,13 @@ exports.getSignUp = (req, res, next) => {
 };
 
 exports.postSignUp = (req, res, next) => {
+  const image = req.file;
   const email = req.body.email;
   const password = req.body.password;
+
+
   const errors = validationResult(req);
+
   if (!errors.isEmpty()) {
     return res.status(422).render("auth/signup.ejs", {
       pageTitle: "Sign Up",
@@ -37,6 +40,18 @@ exports.postSignUp = (req, res, next) => {
       }
     });
   }
+
+  if (!image) {
+    return res.status(422).render("auth/signup.ejs", {
+      pageTitle: "Sign Up",
+      errorMessage: 'Attached file is not an image',
+      oldInput: {
+        email: email,
+        password: password
+      }
+    });
+  }
+ const imageUrl = image.path;
   User.findOne({ email: email })
     .then(user => {
       if (user) {
@@ -54,7 +69,8 @@ exports.postSignUp = (req, res, next) => {
         .then(hashedPassword => {
           const user = new User({
             email: email,
-            password: hashedPassword
+            password: hashedPassword,
+            image: imageUrl
           });
           return user.save();
         })
@@ -68,13 +84,16 @@ exports.postSignUp = (req, res, next) => {
           return res.redirect("/login");
         })
         .catch(err => {
-          console.log(err);
-          //   const error = new Error(err);
-          //   error.statusCode = 500;
-          //   return next(err);
+          const error = new Error(err);
+          error.statusCode = 500;
+          return next(err);
         });
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      const error = new Error(err);
+      error.statusCode = 500;
+      return next(err);
+    });
 };
 
 exports.getLogin = (req, res, next) => {
@@ -89,6 +108,7 @@ exports.getLogin = (req, res, next) => {
 };
 
 exports.postLogin = (req, res, next) => {
+  const image = req.file;
   const errors = validationResult(req);
   const email = req.body.email;
   const password = req.body.password;
@@ -126,7 +146,15 @@ exports.postLogin = (req, res, next) => {
             }
           });
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          const error = new Error(err);
+          error.statusCode = 500;
+          return next(err);
+        });
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      const error = new Error(err);
+      error.statusCode = 500;
+      return next(err);
+    });
 };
