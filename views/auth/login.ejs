@@ -9,17 +9,20 @@
     <% if (errorMessage) { %>
     <div class = errorMessage> <%= errorMessage %></div>
     <%  } %>
-            <form class ="mainForm" method = 'post' action = '/login' novalidate>
+            <form class ="mainForm" method = 'post' action = '/login' enctype="multipart/form-data" novalidate>
                 <div class = 'regm'> Log In </div>
                 <label for = 'email'> Email </label>
                 <input type = 'email' name = 'email' id = 'email'  value = "<%= oldInput.email %>">
             
                 <label for =  'password'> Password</label>
                 <input type = 'password' name = 'password' id = 'password'  value = "<%= oldInput.password %>">
+               
+                <input type = 'file' name = 'titlePhoto' id = 'titlePhoto'>
+                <label for = 'titlePhoho'> Choose a file </label>
+
+                <input type = 'submit' value =  'Submit'>
                 <input type = 'hidden' name = '_csrf' value = '<%= csrfToken  %>'>
             
-                <input type = 'submit' value =  'Submit'>
-           
+                
                 </form>     
-        
 </body>

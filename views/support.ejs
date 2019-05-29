@@ -14,13 +14,17 @@
     <div class = errorMessage ><%= errorMessage %> </div>
 <% } %>
 
-<form class = 'mainform' method = 'post' novalidate>
+<form class = 'mainform' action = '/support' method = 'post' enctype="multipart/form-data" novalidate>
 <div class = message ><%= message %> </div>
+
 <label for = 'email'> Type your email for our response</label>
 <input type = "email" name ='userEmail' id = 'userEmail' value = '<%= oldInput.userEmail %>'>
 
 <label for ='feedback'> Your feedback</label>
 <textarea name = 'feedback' id = 'feedback'  value = '<%= oldInput.feedback %>'></textarea>
+
+<input type = 'file' name = 'titlePhoto' id = 'titlePhoto'>
+<label for = 'titlePhoto'> Choose a file </label>
 
 <input type = 'hidden' name = '_csrf' value = '<%= csrfToken  %>'>
 <input type = 'submit' value = 'Send'>

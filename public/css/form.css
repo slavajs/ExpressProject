@@ -1,6 +1,6 @@
 .mainForm {
   margin: auto;
-  width: 20vw;
+  width: 30vw;
 }
 
 .mainForm label,
@@ -14,13 +14,16 @@
 .mainForm textarea {
   font-family: inherit;
   font-size: 1rem;
+  width: 30vw;
 }
 .mainForm label {
+  width: 30vw;
+  text-align: center;
   font-weight: bold;
   font-size: 1.2rem;
 }
 .mainForm input {
-  width: 20vw;
+  width: 30vw;
   height: 2.5vh;
   border: 1px solid black;
 }
@@ -29,8 +32,9 @@
   background-color: rgb(170, 250, 170);
   border: 1px solid black;
 }
+
 .regm {
-  width: 20vw;
+  width: 30vw;
   padding: 10px;
   margin: 10px 0 0 1rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -46,4 +50,31 @@
 }
 .mainform input[type="submit"]:hover {
   background-color:  rgb(170, 250, 170);
+  cursor: pointer;
+}
+
+.mainform input[type="file"] {
+  width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1
+}
+
+.mainform input[type="file"]  + label {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color:green;
+  display: inline-block;
+  cursor: pointer;
+  width:20vw;
+  text-align: center;
+  width: 30vw
+}
+
+.mainform input[type="file"] :focus + label,
+.mainform input[type="file"]  + label:hover {
+  background-color: red;
 }

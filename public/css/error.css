@@ -9,7 +9,9 @@ html {
 }
 
 .errorMessage {
+ padding-top: 0.75rem;
   width: 50vw;
+  height: 3rem;
   margin: 10px auto;
   color: rgba(0, 0, 0, 0.931);
   background-color: rgb(245, 122, 122);
