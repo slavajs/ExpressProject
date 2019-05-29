@@ -22,9 +22,23 @@ exports.getSupport = (req, res, next) => {
 };
 
 exports.postSupport = (req, res, next) => {
+  const image = req.file;
   const userEmail = req.body.userEmail;
   const feedback = req.body.feedback;
   const errors = validationResult(req);
+
+  if (!image) {
+    return res.status(422).render("support", {
+      message: 'Feedback',
+      pageTitle: "Support",
+      errorMessage: 'Attached file is not an image',
+      oldInput: {
+      userEmail: req.body.userEmail,
+      feedback: req.body.feedback
+      }
+    });
+  }
+
   if(!errors.isEmpty()) {
     return res.render('support', {
       message: 'Feedback',
