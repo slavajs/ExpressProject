@@ -10,7 +10,7 @@ const transporter = nodemailer.createTransport(
     }
   })
 );
-
+console.log( process.env.MAIL_API)
 exports.getSignUp = (req, res, next) => {
   res.render("auth/signup.ejs", {
     pageTitle: "Sign Up",

@@ -9,7 +9,7 @@ const MDBStore = require("connect-mongodb-session")(session);
 const dotenv = require("dotenv").config();
 
 const notFound = require("./errors/404");
-const serverErr = require('./errors/500')
+const serverErr = require("./errors/500");
 
 const authRoutes = require("./routes/auth");
 const supRoutes = require("./routes/support");
@@ -63,7 +63,7 @@ app.use(
 );
 
 app.use(express.static(path.join(__dirname, "public")));
-app.use('images', express.static(path.join(__dirname, 'images')))
+app.use("images", express.static(path.join(__dirname, "images")));
 
 app.set("view engine", "ejs");
 app.set("views", "views");
@@ -97,5 +97,5 @@ app.use(serverErr);
 
 mongoose
   .connect(process.env.MDB_STRING, { useNewUrlParser: true, dbName: "project" })
-  .then(res => app.listen(80))
-  .catch(err => console.log(err));
+  .then(res => app.listen(100))
+  .catch(err => next(err));
